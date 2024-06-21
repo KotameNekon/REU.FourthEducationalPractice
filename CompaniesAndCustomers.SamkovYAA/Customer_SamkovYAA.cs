@@ -16,7 +16,7 @@ namespace LibCompAndCust.SamkovYAA
         
         public int CompanyID{ get; set; }
 
-        public Company Company { get; set; }
+        public Company_SamkovYAA Company { get; set; }
 
         public Customer_SamkovYAA() { }
 
@@ -26,7 +26,7 @@ namespace LibCompAndCust.SamkovYAA
             this.CompanyID = companyID;
         }
 
-        public Customer_SamkovYAA(string name, Company company)
+        public Customer_SamkovYAA(string name, Company_SamkovYAA company)
         {
             this.Name = name;
             this.Company = company;
