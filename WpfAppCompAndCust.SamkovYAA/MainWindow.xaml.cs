@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LibCompAndCust.SamkovYAA;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +21,20 @@ namespace WpfAppCompAndCust.SamkovYAA
     /// </summary>
     public partial class MainWindow : Window
     {
+        private MainApp_SamkovYAA app;
+        private Company_SamkovYAA CurrentCompany { get; set; }
+        private Customer_SamkovYAA CurrenyCustomer { get; set; }
+
         public MainWindow()
         {
             InitializeComponent();
+            app = new MainApp_SamkovYAA();
+
+            this.DataContext = app.Context;
+
+            FillCompaniesCollection();
         }
+
+
     }
 }

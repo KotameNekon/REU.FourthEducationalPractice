@@ -123,10 +123,10 @@ namespace LibCompAndCust.SamkovYAA
 
         }
 
-        private Customer_SamkovYAA Deserialize(string path)
+        /*private Customer_SamkovYAA Deserialize(string path)
         {
 
-        }
+        }*/
 
         public void SaveChanges()
         {

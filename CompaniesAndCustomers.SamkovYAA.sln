@@ -8,6 +8,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfAppCompAndCust.SamkovYAA", "WpfAppCompAndCust.SamkovYAA\WpfAppCompAndCust.SamkovYAA.csproj", "{B1BC94D3-88D1-49F6-84FA-0BFDCF234A0B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestsForLibCompAndCust.SamkovYAA", "TestsForLibCompAndCust.SamkovYAA\TestsForLibCompAndCust.SamkovYAA.csproj", "{784EFA8C-93D2-4865-90E4-EF696A301528}"
+	ProjectSection(ProjectDependencies) = postProject
+		{32077E3B-B197-4DB3-81A7-F46820EC2954} = {32077E3B-B197-4DB3-81A7-F46820EC2954}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

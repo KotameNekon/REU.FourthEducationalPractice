@@ -49,11 +49,17 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MainAppTest_SamkovYAA.cs" />
+    <Compile Include="MainAppTests_SamkovYAA.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CompaniesAndCustomers.SamkovYAA\LibCompAndCust.SamkovYAA.csproj">
+      <Project>{32077e3b-b197-4db3-81a7-f46820ec2954}</Project>
+      <Name>LibCompAndCust.SamkovYAA</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
