@@ -5,8 +5,63 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfAppCompAndCust.SamkovYAA"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
+        Title="Компании и сотрудники" Height="450" Width="800" Closing="Window_Closing" WindowStartupLocation="CenterScreen">
+    <Window.Resources>
+        <DataTemplate x:Key="listTemplate">
+            <StackPanel Margin="4">
+                <TextBlock FontSize="12" Text="{Binding Path=Name}" HorizontalAlignment="Center" />
+            </StackPanel>
+        </DataTemplate>
+    </Window.Resources>
+    
+    <Window.CommandBindings>
+        <CommandBinding Command="local:WindowCommands_SamkovYAA.Exit" Executed="Exit_Executed" />
+        <CommandBinding Command="local:WindowCommands_SamkovYAA.AddCompany" Executed="AddCompany_Executed" />
+        <CommandBinding Command="local:WindowCommands_SamkovYAA.EditCompany" Executed="EditCompany_Executed" />
+        <CommandBinding Command="local:WindowCommands_SamkovYAA.RemoveCompany" Executed="RemoveCompany_Executed" />
+        <CommandBinding Command="local:WindowCommands_SamkovYAA.AddCustomer" Executed="AddCustomer_Executed" />
+        <CommandBinding Command="local:WindowCommands_SamkovYAA.EditCustomer" Executed="EditCustomer_Executed" />
+        <CommandBinding Command="local:WindowCommands_SamkovYAA.RemoveCustomer" Executed="RemoveCustomer_Executed" />
+    </Window.CommandBindings>
+    
+    <Grid x:Name="mainLayout">
+        <DockPanel>
+            <Menu DockPanel.Dock="Top" MinHeight="25">
+                <MenuItem Header="Компании">
+                    <MenuItem Header="Добавить компанию" CommandTarget="{Binding ElementName=CompaniesList}" Command="local:WindowCommands_SamkovYAA.AddCompany"/>
+                    <MenuItem Header="Изменить компанию" CommandTarget="{Binding ElementName=CompaniesList}" Command="local:WindowCommands_SamkovYAA.EditCompany"/>
+                    <Separator />
+                    <MenuItem Header="Удалить компанию" CommandTarget="{Binding ElementName=CompaniesList}" Command="local:WindowCommands_SamkovYAA.RemoveCompany"/>
+                </MenuItem>
+                <MenuItem Header="Сотрудники">
+                    <MenuItem Header="Добавить сотрудника" CommandTarget="{Binding ElementName=CustomersList}" Command="local:WindowCommands_SamkovYAA.AddCustomer"/>
+                    <MenuItem Header="Изменить сотрудника" CommandTarget="{Binding ElementName=CustomersList}" Command="local:WindowCommands_SamkovYAA.EditCustomer"/>
+                    <Separator />
+                    <MenuItem Header="Удалить сотрудника" CommandTarget="{Binding ElementName=CustomersList}" Command="local:WindowCommands_SamkovYAA.RemoveCustomer"/>
+                </MenuItem>
+                <MenuItem Header="Выход" Command="local:WindowCommands_SamkovYAA.Exit"/>
+            </Menu>
+
+            <ListBox x:Name="CompaniesList" ItemTemplate="{StaticResource listTemplate}" SelectionChanged="CompaniesList_SelectionChanged">
+                <ListBox.ContextMenu>
+                    <ContextMenu>
+                        <MenuItem Header="Добавить компанию" CommandTarget="{Binding ElementName=CompaniesList}" Command="local:WindowCommands_SamkovYAA.AddCompany"/>
+                        <MenuItem Header="Изменить компанию" CommandTarget="{Binding ElementName=CompaniesList}" Command="local:WindowCommands_SamkovYAA.EditCompany"/>
+                        <Separator />
+                        <MenuItem Header="Удалить компанию" CommandTarget="{Binding ElementName=CompaniesList}" Command="local:WindowCommands_SamkovYAA.RemoveCompany"/>
+                    </ContextMenu>
+                </ListBox.ContextMenu>
+            </ListBox>
+            <ListBox x:Name="CustomersList" ItemTemplate="{StaticResource listTemplate}" SelectionChanged="CustomersList_SelectionChanged">
+                <ListBox.ContextMenu>
+                    <ContextMenu>
+                        <MenuItem Header="Добавить сотрудника" CommandTarget="{Binding ElementName=CustomersList}" Command="local:WindowCommands_SamkovYAA.AddCustomer"/>
+                        <MenuItem Header="Изменить сотрудника" CommandTarget="{Binding ElementName=CustomersList}" Command="local:WindowCommands_SamkovYAA.EditCustomer"/>
+                        <Separator />
+                        <MenuItem Header="Удалить сотрудника" CommandTarget="{Binding ElementName=CustomersList}" Command="local:WindowCommands_SamkovYAA.RemoveCustomer"/>
+                    </ContextMenu>
+                </ListBox.ContextMenu>
+            </ListBox>
+        </DockPanel>
     </Grid>
 </Window>
