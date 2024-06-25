@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -12,13 +13,13 @@ namespace WpfAppCompAndCust.SamkovYAA
     {
         static WindowCommands_SamkovYAA()
         {
-            Exit = new RoutedCommand("Exit", typeof(WindowCommands_SamkovYAA));
-            AddCompany = new RoutedCommand("AddCompany", typeof(WindowCommands_SamkovYAA));
-            EditCompany = new RoutedCommand("EditCompany", typeof(WindowCommands_SamkovYAA));
-            RemoveCompany = new RoutedCommand("RemoveCompany", typeof(WindowCommands_SamkovYAA));
-            AddCustomer = new RoutedCommand("AddCustomer", typeof(WindowCommands_SamkovYAA));
-            EditCustomer = new RoutedCommand("EditCustomer", typeof(WindowCommands_SamkovYAA));
-            RemoveCustomer = new RoutedCommand("RemoveCustomer", typeof(WindowCommands_SamkovYAA));
+            Exit = new RoutedCommand("Exit", typeof(MainWindow));
+            AddCompany = new RoutedCommand("AddCompany", typeof(MainWindow));
+            EditCompany = new RoutedCommand("EditCompany", typeof(MainWindow));
+            RemoveCompany = new RoutedCommand("RemoveCompany", typeof(MainWindow));
+            AddCustomer = new RoutedCommand("AddCustomer", typeof(MainWindow));
+            EditCustomer = new RoutedCommand("EditCustomer", typeof(MainWindow));
+            RemoveCustomer = new RoutedCommand("RemoveCustomer", typeof(MainWindow));
         }
         public static RoutedCommand Exit { get; set; }
         public static RoutedCommand AddCompany { get; set; }

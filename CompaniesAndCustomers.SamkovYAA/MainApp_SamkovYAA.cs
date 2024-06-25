@@ -12,21 +12,9 @@ using System.Xml.Serialization;
 
 namespace LibCompAndCust.SamkovYAA
 {
-    public class MainApp_SamkovYAA : IDisposable, IMainApp_SamkovYAA
+    public class MainApp_SamkovYAA : IMainApp_SamkovYAA
     {
         public ApplicationContext_SamkovYAA Context { get; private set; } = new ApplicationContext_SamkovYAA();
-
-        private bool disposedValue;
-
-        public void Dispose()
-        {
-
-        }
-
-        protected virtual void Dispose(bool disposing)
-        {
-
-        }
 
         ~MainApp_SamkovYAA()
         {
@@ -81,14 +69,6 @@ namespace LibCompAndCust.SamkovYAA
             }
         }
 
-        public void AddCustomers(List<Customer_SamkovYAA> custlist, Company_SamkovYAA company)
-        {
-            foreach(Customer_SamkovYAA customer in custlist)
-            {
-                this.AddCustomer(customer, company);
-            }
-        }
-
         public void UpdateCustomer(Customer_SamkovYAA customer, Company_SamkovYAA company)
         {
             if (!company.Customers.Contains(customer))
@@ -116,21 +96,6 @@ namespace LibCompAndCust.SamkovYAA
         public IEnumerable<Customer_SamkovYAA> GetCustomers(Company_SamkovYAA company)
         {
             return company.Customers.Where(c => c.CompanyID == company.ID);
-        }
-
-        private void Serialize(string path, Customer_SamkovYAA obj)
-        {
-
-        }
-
-        /*private Customer_SamkovYAA Deserialize(string path)
-        {
-
-        }*/
-
-        public void SaveChanges()
-        {
-
         }
     }
 }
