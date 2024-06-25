@@ -8,7 +8,7 @@ namespace TestsForLibCompAndCust.SamkovYAA
     [TestClass()]
     public class MainAppTests_SamkovYAA
     {
-        private MainApp_SamkovYAA _app;
+        //private MainApp_SamkovYAA _app;
 
         [TestMethod()]
         public void MainAppTest()
@@ -26,43 +26,47 @@ namespace TestsForLibCompAndCust.SamkovYAA
         [TestMethod()]
         public void AddCompanyTest()
         {
+            var app = new MainApp_SamkovYAA();
             var company = new Company_SamkovYAA();
-            _app.AddCompany(company);
-            var companies = _app.GetCompanies();
-            Assert.IsTrue(companies.Contains(company));
+            app.AddCompany(company);
+            var companies = app.GetCompanies().ToList();
+            CollectionAssert.Contains(companies, company);
         }
 
         [TestMethod()]
         public void UpdateCompanyTest()
         {
+            var app = new MainApp_SamkovYAA();
             var company = new Company_SamkovYAA();
-            _app.AddCompany(company);
+            app.AddCompany(company);
             company.Name = "Updated Name";
-            _app.UpdateCompany(company);
-            var updatedCompany = _app.GetCompanies().FirstOrDefault(c => c.ID == company.ID);
+            app.UpdateCompany(company);
+            var updatedCompany = app.GetCompanies().FirstOrDefault(c => c.ID == company.ID);
             Assert.AreEqual("Updated Name", updatedCompany.Name);
         }
 
         [TestMethod()]
         public void RemoveCompanyTest()
         {
+            var app = new MainApp_SamkovYAA();
             var company = new Company_SamkovYAA();
-            _app.AddCompany(company);
-            _app.RemoveCompany(company);
-            var companies = _app.GetCompanies();
-            Assert.IsFalse(companies.Contains(company));
+            app.AddCompany(company);
+            app.RemoveCompany(company);
+            var companies = app.GetCompanies().ToList();
+            CollectionAssert.DoesNotContain(companies, company);
         }
 
         [TestMethod()]
         public void GetCompaniesTest()
         {
+            var app = new MainApp_SamkovYAA();
             var company1 = new Company_SamkovYAA { Name = "Company 1" };
             var company2 = new Company_SamkovYAA { Name = "Company 2" };
 
-            _app.AddCompany(company1);
-            _app.AddCompany(company2);
+            app.AddCompany(company1);
+            app.AddCompany(company2);
 
-            var companies = _app.GetCompanies().ToList();
+            var companies = app.GetCompanies().ToList();
 
             Assert.AreEqual(2, companies.Count);
             CollectionAssert.Contains(companies, company1);
@@ -72,52 +76,56 @@ namespace TestsForLibCompAndCust.SamkovYAA
         [TestMethod()]
         public void AddCustomerTest()
         {
+            var app = new MainApp_SamkovYAA();
             var company = new Company_SamkovYAA();
-            _app.AddCompany(company);
+            app.AddCompany(company);
             var customer = new Customer_SamkovYAA();
-            _app.AddCustomer(customer, company);
-            var customers = _app.GetCustomers(company);
-            Assert.IsTrue(customers.Contains(customer));
+            app.AddCustomer(customer, company);
+            var customers = app.GetCustomers(company).ToList();
+            CollectionAssert.Contains(customers, customer);
         }
 
         [TestMethod()]
         public void UpdateCustomerTest()
         {
+            var app = new MainApp_SamkovYAA();
             var company = new Company_SamkovYAA();
-            _app.AddCompany(company);
+            app.AddCompany(company);
             var customer = new Customer_SamkovYAA();
-            _app.AddCustomer(customer, company);
+            app.AddCustomer(customer, company);
             customer.Name = "Updated Name";
-            _app.UpdateCustomer(customer, company);
-            var updatedCustomer = _app.GetCustomers(company).FirstOrDefault(c => c.ID == customer.ID);
+            app.UpdateCustomer(customer, company);
+            var updatedCustomer = app.GetCustomers(company).FirstOrDefault(c => c.ID == customer.ID);
             Assert.AreEqual("Updated Name", updatedCustomer.Name);
         }
 
         [TestMethod()]
         public void RemoveCustomerTest()
         {
+            var app = new MainApp_SamkovYAA();
             var company = new Company_SamkovYAA();
-            _app.AddCompany(company);
+            app.AddCompany(company);
             var customer = new Customer_SamkovYAA();
-            _app.AddCustomer(customer, company);
-            _app.RemoveCustomer(customer, company);
-            var customers = _app.GetCustomers(company);
-            Assert.IsFalse(customers.Contains(customer));
+            app.AddCustomer(customer, company);
+            app.RemoveCustomer(customer, company);
+            var customers = app.GetCustomers(company).ToList();
+            CollectionAssert.DoesNotContain(customers, customer);
         }
 
         [TestMethod()]
         public void GetCustomersTest()
         {
+            var app = new MainApp_SamkovYAA();
             var company = new Company_SamkovYAA { Name = "Company" };
-            _app.AddCompany(company);
+            app.AddCompany(company);
 
             var customer1 = new Customer_SamkovYAA { Name = "Customer 1" };
             var customer2 = new Customer_SamkovYAA { Name = "Customer 2" };
 
-            _app.AddCustomer(customer1, company);
-            _app.AddCustomer(customer2, company);
+            app.AddCustomer(customer1, company);
+            app.AddCustomer(customer2, company);
 
-            var customers = _app.GetCustomers(company).ToList();
+            var customers = app.GetCustomers(company).ToList();
 
             Assert.AreEqual(2, customers.Count);
             CollectionAssert.Contains(customers, customer1);
