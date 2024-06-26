@@ -18,10 +18,5 @@ namespace LibCompAndCust.SamkovYAA
         {
 
         }
-
-        public void Dispose()
-        {
-
-        }
     }
 }

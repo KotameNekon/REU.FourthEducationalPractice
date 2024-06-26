@@ -8,8 +8,6 @@ namespace TestsForLibCompAndCust.SamkovYAA
     [TestClass()]
     public class MainAppTests_SamkovYAA
     {
-        //private MainApp_SamkovYAA _app;
-
         [TestMethod()]
         public void MainAppTest()
         {

@@ -31,17 +31,7 @@ namespace WpfAppCompAndCust.SamkovYAA
             InitializeComponent();
             app = new MainApp_SamkovYAA();
 
-            //this.DataContext = app.Context;
-
             FillCompaniesCollection();
-        }
-
-        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-            if (app != null)
-            {
-                //app.Dispose();
-            }
         }
 
         private void CompaniesList_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -58,107 +48,6 @@ namespace WpfAppCompAndCust.SamkovYAA
         {
             CurrentCustomer = this.CustomersList.SelectedItem as Customer_SamkovYAA;
         }
-
-        /*private void Exit_Executed(object sender, SelectionChangedEventArgs e)
-        {
-            this.Close();
-        }
-
-        private void AddCompany_Executed(object sender, SelectionChangedEventArgs e)
-        {
-            CommandWindow cmdWindow = new CommandWindow("Новая компания", "Наименование компании: ", "", app, 1);
-            cmdWindow.Owner = this;
-
-            if (cmdWindow.ShowDialog() == true)
-            {
-                FillCompaniesCollection();
-            }
-        }
-
-        private void EditCompany_Executed(object sender, SelectionChangedEventArgs e)
-        {
-            if (CurrentCompany != null)
-            {
-                CommandWindow cmdWindow = new CommandWindow("Изменить компанию", "Наименование компании: ", CurrentCompany.Name, app, 2, CurrentCompany);
-                cmdWindow.Owner = this;
-                int idx = this.CompaniesList.SelectedIndex;
-
-                if (cmdWindow.ShowDialog() == true)
-                {
-                    FillCompaniesCollection();
-                    this.CompaniesList.SelectedIndex = idx;
-                }
-            }
-        }
-
-        private void RemoveCompany_Executed(object sender, SelectionChangedEventArgs e)
-        {
-            if (CurrentCompany != null)
-            {
-                CommandWindow cmdWindow = new CommandWindow("Удалить компанию", "Наименование компании: ", CurrentCompany.Name, app, 3, CurrentCompany);
-                cmdWindow.Owner = this;
-                cmdWindow.tbName.IsReadOnly = true;
-
-                if (cmdWindow.ShowDialog() == true)
-                {
-                    FillCompaniesCollection();
-                    if (this.CompaniesList.Items.Count == 0)
-                    {
-                        this.CustomersList.ItemsSource = null;
-                    }
-                }
-            }
-        }
-
-        private void AddCustomer_Executed(object sender, SelectionChangedEventArgs e)
-        {
-            if (CurrentCompany != null)
-            {
-                CommandWindow cmdWindow = new CommandWindow("Новый сотрудник", "Имя сотрудника: ", "", app, 4, CurrentCompany);
-                cmdWindow.Owner = this;
-                int idx = this.CompaniesList.SelectedIndex;
-
-                if (cmdWindow.ShowDialog() == true)
-                {
-                    FillCompaniesCollection();
-                    this.CompaniesList.SelectedIndex = idx;
-
-                    FillCustomersCollection(CurrentCompany);
-                }
-            }
-        }
-
-        private void EditCustomer_Executed(object sender, SelectionChangedEventArgs e)
-        {
-            CommandWindow cmdWindow = new CommandWindow("Изменить сотрудника", "Имя сотрудника: ", CurrentCustomer.Name, app, 5, CurrentCompany, CurrentCustomer);
-            cmdWindow.Owner = this;
-            int idx = this.CompaniesList.SelectedIndex;
-            int index = this.CustomersList.SelectedIndex;
-
-            if (cmdWindow.ShowDialog() == true)
-            {
-                FillCompaniesCollection();
-                this.CompaniesList.SelectedIndex = idx;
-
-                FillCustomersCollection(CurrentCompany);
-                this.CustomersList.SelectedIndex = index;
-            }
-        }
-
-        private void RemoveCustomer_Executed(object sender, SelectionChangedEventArgs e)
-        {
-            CommandWindow cmdWindow = new CommandWindow("Удалить сотрудника", "Имя сотрудника: ", CurrentCustomer.Name, app, 6, CurrentCompany, CurrentCustomer);
-            cmdWindow.Owner = this;
-            int idx = this.CompaniesList.SelectedIndex;
-            cmdWindow.tbName.IsReadOnly = true;
-
-            if (cmdWindow.ShowDialog() == true)
-            {
-                FillCompaniesCollection();
-                this.CompaniesList.SelectedIndex = idx;
-                FillCustomersCollection(CurrentCompany);
-            }
-        }*/
 
         private void FillCompaniesCollection()
         {
