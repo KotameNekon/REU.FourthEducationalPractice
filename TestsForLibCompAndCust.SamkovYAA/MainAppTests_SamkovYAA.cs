@@ -11,10 +11,6 @@ namespace TestsForLibCompAndCust.SamkovYAA
         [TestMethod()]
         public void MainAppTest()
         {
-            /*MainApp_SamkovYAA ma = new MainApp_SamkovYAA();
-            Assert.IsInstanceOfType(ma, typeof(MainApp_SamkovYAA));
-            Assert.IsNotNull(ma);*/
-
             var app = new MainApp_SamkovYAA();
             Assert.IsNotNull(app.Context);
             Assert.IsNotNull(app.Context.Companies);
@@ -37,10 +33,10 @@ namespace TestsForLibCompAndCust.SamkovYAA
             var app = new MainApp_SamkovYAA();
             var company = new Company_SamkovYAA();
             app.AddCompany(company);
-            company.Name = "Updated Name";
+            company.Name = "Finabachi Motion";
             app.UpdateCompany(company);
             var updatedCompany = app.GetCompanies().FirstOrDefault(c => c.ID == company.ID);
-            Assert.AreEqual("Updated Name", updatedCompany.Name);
+            Assert.AreEqual("Finabachi Motion", updatedCompany.Name);
         }
 
         [TestMethod()]
@@ -58,8 +54,8 @@ namespace TestsForLibCompAndCust.SamkovYAA
         public void GetCompaniesTest()
         {
             var app = new MainApp_SamkovYAA();
-            var company1 = new Company_SamkovYAA { Name = "Company 1" };
-            var company2 = new Company_SamkovYAA { Name = "Company 2" };
+            var company1 = new Company_SamkovYAA { Name = "Aboba Pictures" };
+            var company2 = new Company_SamkovYAA { Name = "Finabachi Motion" };
 
             app.AddCompany(company1);
             app.AddCompany(company2);
@@ -91,10 +87,10 @@ namespace TestsForLibCompAndCust.SamkovYAA
             app.AddCompany(company);
             var customer = new Customer_SamkovYAA();
             app.AddCustomer(customer, company);
-            customer.Name = "Updated Name";
+            customer.Name = "Yaroslav";
             app.UpdateCustomer(customer, company);
             var updatedCustomer = app.GetCustomers(company).FirstOrDefault(c => c.ID == customer.ID);
-            Assert.AreEqual("Updated Name", updatedCustomer.Name);
+            Assert.AreEqual("Yaroslav", updatedCustomer.Name);
         }
 
         [TestMethod()]
@@ -114,11 +110,11 @@ namespace TestsForLibCompAndCust.SamkovYAA
         public void GetCustomersTest()
         {
             var app = new MainApp_SamkovYAA();
-            var company = new Company_SamkovYAA { Name = "Company" };
+            var company = new Company_SamkovYAA { Name = "Aboba Pictures" };
             app.AddCompany(company);
 
-            var customer1 = new Customer_SamkovYAA { Name = "Customer 1" };
-            var customer2 = new Customer_SamkovYAA { Name = "Customer 2" };
+            var customer1 = new Customer_SamkovYAA { Name = "Yaroslav" };
+            var customer2 = new Customer_SamkovYAA { Name = "Anastasiya" };
 
             app.AddCustomer(customer1, company);
             app.AddCustomer(customer2, company);
